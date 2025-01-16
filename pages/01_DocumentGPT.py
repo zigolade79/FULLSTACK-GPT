@@ -15,6 +15,7 @@ st.set_page_config(
     page_icon="📃",
 )
 
+st.title("DocumentGPT")
 
 def save_key(api_key):
     st.session_state["api_key"] = api_key
@@ -41,14 +42,34 @@ class ChatCallbackHandler(BaseCallbackHandler):
         self.message += token
         self.message_box.markdown(self.message)
 
+if st.session_state["api_key"] != '':
+    llm = ChatOpenAI(
+        temperature=0.1,
+        streaming=True,
+        callbacks=[
+            ChatCallbackHandler(),
+        ],
+    )
+    st.markdown(
+        """
+        Welcome!
+                    
+        Use this chatbot to ask questions to an AI about your files!
 
-llm = ChatOpenAI(
-    temperature=0.1,
-    streaming=True,
-    callbacks=[
-        ChatCallbackHandler(),
-    ],
-)
+        Upload your File on the sidebar.
+        """
+    )
+else:
+    st.markdown(
+        """
+        Welcome!
+                    
+        Use this chatbot to ask questions to an AI about your files!
+
+        Input your API KEY on the sidebar.
+        """
+    )
+    
 
 
 @st.cache_data(show_spinner="Embedding file...")
@@ -114,17 +135,8 @@ prompt = ChatPromptTemplate.from_messages(
 )
 
 
-st.title("DocumentGPT")
 
-st.markdown(
-    """
-Welcome!
-            
-Use this chatbot to ask questions to an AI about your files!
 
-Upload your files on the sidebar.
-"""
-)
 
 
 
