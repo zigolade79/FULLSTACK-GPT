@@ -1,0 +1,10 @@
+XZ Backdoor Research
+
+1. Wikipedia Summary:
+In February 2024, a malicious backdoor was introduced to the Linux build of the xz utility within the liblzma library in versions 5.6.0 and 5.6.1 by an account using the name "Jia Tan". The backdoor gives an attacker who possesses a specific Ed448 private key remote code execution capabilities on the affected Linux system. The issue has been given the Common Vulnerabilities and Exposures number CVE-2024-3094 and has been assigned a CVSS score of 10.0, the highest possible score.
+
+2. Impact:
+While xz is commonly present in most Linux distributions, at the time of discovery the backdoored version had not yet been widely deployed to production systems, but was present in development versions of major distributions. The backdoor was discovered by the software developer Andres Freund, who announced his findings on 29 March 2024.
+
+3. DuckDuckGo Summary:
+The XZ backdoor was a harmful piece of code added to versions 5.6.0 and 5.6.1 of the software. This code changed the way the SSH service works to let unauthorized people access systems from afar. Security experts found and fixed the problem quickly before it could cause widespread harm. It is advised to revert to a previous known safe version of XZ Utils, such as 5.4.
